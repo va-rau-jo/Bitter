@@ -7,5 +7,6 @@
     <string name="intent_host">cprest</string>
     <string name="input_hint">What\'s happening?</string>
     <string name="btn_send">Send</string>
+    <string name="character_count">280</string>
 
 </resources>
