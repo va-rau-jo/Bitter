@@ -4,8 +4,8 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId "com.codepath.apps.restclienttemplate"
-        minSdkVersion 17
+        applicationId "com.codepath.bitter"
+        minSdkVersion 15
         targetSdkVersion 28
 
         // Room schemas
