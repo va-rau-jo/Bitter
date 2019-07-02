@@ -40,12 +40,12 @@
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-v21/abc_action_bar_item_background_material.xml"
     },
     {
-        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_holo_dark.xml.flat",
-        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable/abc_list_selector_holo_dark.xml"
-    },
-    {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable_abc_ratingbar_material.xml.flat",
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable/abc_ratingbar_material.xml"
+    },
+    {
+        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_holo_dark.xml.flat",
+        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable/abc_list_selector_holo_dark.xml"
     },
     {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/layout_notification_media_action.xml.flat",
@@ -68,12 +68,12 @@
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/layout/select_dialog_singlechoice_material.xml"
     },
     {
-        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_longpressed_holo.9.png.flat",
-        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-xhdpi-v4/abc_list_longpressed_holo.9.png"
-    },
-    {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-mdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_longpressed_holo.9.png.flat",
+        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-xhdpi-v4/abc_list_longpressed_holo.9.png"
     },
     {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable_abc_ic_ab_back_material.xml.flat",
@@ -96,12 +96,12 @@
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-hdpi-v4/abc_list_pressed_holo_light.9.png"
     },
     {
-        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
-        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-xxxhdpi-v4/abc_spinner_mtrl_am_alpha.9.png"
-    },
-    {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable_abc_vector_test.xml.flat",
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable/abc_vector_test.xml"
+    },
+    {
+        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
+        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-xxxhdpi-v4/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
@@ -120,12 +120,12 @@
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-hdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
-        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-hdpi-v4/abc_spinner_mtrl_am_alpha.9.png"
-    },
-    {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/color_switch_thumb_material_light.xml.flat",
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/color/switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
+        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-hdpi-v4/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/color_abc_primary_text_disable_only_material_dark.xml.flat",
@@ -204,12 +204,12 @@
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-xxxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
-        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
-        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-hdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-xxxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
+        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-hdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_background_transition_holo_light.xml.flat",
@@ -220,12 +220,12 @@
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/layout-watch-v20/abc_alert_dialog_title_material.xml"
     },
     {
-        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-v21_notification_action_background.xml.flat",
-        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/50159f353cb92815e6a56bf9bf459d86/res/drawable-v21/notification_action_background.xml"
-    },
-    {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-ldrtl-xxxhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-ldrtl-xxxhdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-v21_notification_action_background.xml.flat",
+        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/50159f353cb92815e6a56bf9bf459d86/res/drawable-v21/notification_action_background.xml"
     },
     {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/layout_abc_activity_chooser_view_list_item.xml.flat",
@@ -244,12 +244,12 @@
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-xhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
-        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable_abc_seekbar_thumb_material.xml.flat",
-        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable/abc_seekbar_thumb_material.xml"
-    },
-    {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-xhdpi-v4/abc_scrubber_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable_abc_seekbar_thumb_material.xml.flat",
+        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable/abc_seekbar_thumb_material.xml"
     },
     {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-ldrtl-xhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -260,12 +260,12 @@
         "source": "/Users/varaujo/Documents/Bitter/app/src/main/res/drawable-hdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable_abc_spinner_textfield_background_material.xml.flat",
-        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable/abc_spinner_textfield_background_material.xml"
-    },
-    {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-hdpi-v4/abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable_abc_spinner_textfield_background_material.xml.flat",
+        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable/abc_spinner_textfield_background_material.xml"
     },
     {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/layout_notification_template_lines_media.xml.flat",
@@ -560,12 +560,12 @@
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-xhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/50159f353cb92815e6a56bf9bf459d86/res/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
-    },
-    {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_star_black_16dp.png.flat",
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-mdpi-v4/abc_ic_star_black_16dp.png"
+    },
+    {
+        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/50159f353cb92815e6a56bf9bf459d86/res/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
     },
     {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
@@ -576,16 +576,16 @@
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/layout/abc_select_dialog_material.xml"
     },
     {
-        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
-        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-mdpi-v4/abc_switch_track_mtrl_alpha.9.png"
+        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/color-v23_abc_btn_colored_borderless_text_material.xml.flat",
+        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/color-v23/abc_btn_colored_borderless_text_material.xml"
     },
     {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-xxxhdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
     {
-        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/color-v23_abc_btn_colored_borderless_text_material.xml.flat",
-        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/color-v23/abc_btn_colored_borderless_text_material.xml"
+        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
+        "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/drawable-mdpi-v4/abc_switch_track_mtrl_alpha.9.png"
     },
     {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
@@ -798,6 +798,10 @@
     {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/layout_abc_popup_menu_header_item_layout.xml.flat",
         "source": "/Users/varaujo/.gradle/caches/transforms-2/files-2.1/146b062d05e88b1b1d387d0472135c4b/res/layout/abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/layout_item_tweet.xml.flat",
+        "source": "/Users/varaujo/Documents/Bitter/app/src/main/res/layout/item_tweet.xml"
     },
     {
         "merged": "/Users/varaujo/Documents/Bitter/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_focused_holo.9.png.flat",

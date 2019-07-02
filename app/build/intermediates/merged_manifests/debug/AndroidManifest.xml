@@ -19,8 +19,9 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:testOnly="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name="com.codepath.apps.restclienttemplate.TimelineActivity" />
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true" >
+        <activity android:name="com.codepath.apps.restclienttemplate.activities.TimelineActivity" />
         <activity
             android:name="com.codepath.apps.restclienttemplate.activities.LoginActivity"
             android:label="@string/app_name"
