@@ -14,6 +14,8 @@ import com.codepath.models.Tweet;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
@@ -59,16 +61,13 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView ivProfileImage;
-        public TextView tvUsername;
-        public TextView tvBody;
+        @BindView(R.id.ivProfileImage) ImageView ivProfileImage;
+        @BindView(R.id.tvUsername) TextView tvUsername;
+        @BindView(R.id.tvBody) TextView tvBody;
 
         public ViewHolder(View itemView) {
             super(itemView);
-
-            ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
-            tvUsername = itemView.findViewById(R.id.tvUsername);
-            tvBody = itemView.findViewById(R.id.tvBody);
+            ButterKnife.bind(this, itemView);
         }
     }
 

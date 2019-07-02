@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -18,51 +17,54 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
 public class TimelineActivity extends AppCompatActivity {
 
+    // Code for creating a tweet
     public static final int COMPOSE_RESULT_CODE = 11;
 
     private BitterClient client;
     private ArrayList<Tweet> tweets;
     private TweetAdapter adapter;
-    private RecyclerView rvTweets;
+    @BindView(R.id.rvTweets) RecyclerView rvTweets;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
+        ButterKnife.bind(this);
 
         client = BitterApp.getRestClient(this);
         tweets = new ArrayList<>();
         adapter = new TweetAdapter(tweets);
-        rvTweets = findViewById(R.id.rvTweets);
         rvTweets.setLayoutManager(new LinearLayoutManager(this));
         rvTweets.setAdapter(adapter);
 
         populateTimeline();
     }
 
-
-    // Inflate the menu; this adds items to the action bar if it is present.
+    /**
+     * Inflates the timeline and adds the action items to the menu
+     * @param menu The menu (specific to this activity/layout)
+     * @return true if the options menu was created successfully
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.timeline, menu);
         return true;
     }
 
+    /**
+     * Called to populate the recycler view with the user's timeline
+     */
     private void populateTimeline() {
         client.getHomeTimeline(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Log.d("success", "made it 1");
-            }
-
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 try {
@@ -75,32 +77,20 @@ public class TimelineActivity extends AppCompatActivity {
                 catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Log.d("success", "made it 2");
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                Log.d("TwitterClient", "uh oh spaghetti-os");
-                throwable.printStackTrace();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                Log.d("TwitterClient", "uh oh spaghetti-os");
-                throwable.printStackTrace();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                Log.d("TwitterClient", "uh oh spaghetti-os");
-                throwable.printStackTrace();
             }
         });
     }
 
+    /**
+     * Callback function that returns the tweet that was uploaded
+     * @param requestCode The custom request code for the action (arbitrary)
+     * @param resultCode The result code (OK, ERROR, etc)
+     * @param data The intent with possible data stored inside
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == COMPOSE_RESULT_CODE) {
+        if (resultCode == RESULT_OK && requestCode == COMPOSE_RESULT_CODE &&
+            data.getExtras() != null) {
             Tweet tweet = data.getExtras().getParcelable("new_tweet");
             tweets.add(0, tweet);
             adapter.notifyItemInserted(0);
@@ -124,6 +114,9 @@ public class TimelineActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Starts the compose activity and forces a callback with the new tweet parcel
+     */
     private void goToComposeActivity() {
         startActivityForResult(new Intent(this, ComposeActivity.class), COMPOSE_RESULT_CODE);
     }

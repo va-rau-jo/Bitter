@@ -18,23 +18,32 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cz.msebera.android.httpclient.Header;
 
 public class ComposeActivity extends AppCompatActivity {
 
     private BitterClient client;
 
-    private EditText etTweetInput;
-    private Button btnSend;
+    @BindView(R.id.etTweetInput) EditText etTweetInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose);
+        ButterKnife.bind(this);
 
         client = BitterApp.getRestClient(this);
-        etTweetInput = findViewById(R.id.etTweetInput);
-        btnSend = findViewById(R.id.btnSend);
+    }
+
+    /**
+     * Creates the event listener for a click on the send button. Uses the BitterClient to make a
+     * post call to the Twitter API
+     */
+    @OnClick({R.id.btnSend})
+    public void setBtnSendOnClickListener(Button btnSend) {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
