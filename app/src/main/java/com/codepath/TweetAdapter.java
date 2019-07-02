@@ -14,6 +14,8 @@ import com.codepath.models.Tweet;
 
 import java.util.ArrayList;
 
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
+
 public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
 
     private ArrayList<Tweet> tweets;
@@ -47,6 +49,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
 
         Glide.with(context)
                 .load(tweet.user.profileImageUrl)
+                .bitmapTransform(new CropCircleTransformation(context))
                 .into(viewHolder.ivProfileImage);
     }
 
