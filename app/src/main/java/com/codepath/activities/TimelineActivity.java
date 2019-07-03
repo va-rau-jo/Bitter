@@ -2,6 +2,7 @@ package com.codepath.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +25,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cz.msebera.android.httpclient.Header;
 
 public class TimelineActivity extends AppCompatActivity {
@@ -41,6 +43,8 @@ public class TimelineActivity extends AppCompatActivity {
     @BindView(R.id.rvTweets)
     RecyclerView rvTweets;
 
+    @BindView(R.id.fabCompose)
+    FloatingActionButton fabCompose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,37 +61,12 @@ public class TimelineActivity extends AppCompatActivity {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                fetchTimelineAsync(0);
+                fetchTimelineAsync();
             }
         });
 
-        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
-
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright);
         populateTimeline();
-    }
-
-    public void fetchTimelineAsync(int page) {
-        client.getHomeTimeline(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                adapter.clear();
-                List<Tweet> newTweets = new ArrayList<>();
-
-                try {
-                    for(int i = 0; i < response.length(); i++) {
-                        newTweets.add(Tweet.fromJSON(response.getJSONObject(i)));
-                    }
-
-                    adapter.addAll(newTweets);
-                    swipeContainer.setRefreshing(false);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
     /**
@@ -116,6 +95,27 @@ public class TimelineActivity extends AppCompatActivity {
                     }
                 }
                 catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void fetchTimelineAsync() {
+        client.getHomeTimeline(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                adapter.clear();
+                List<Tweet> newTweets = new ArrayList<>();
+
+                try {
+                    for(int i = 0; i < response.length(); i++) {
+                        newTweets.add(Tweet.fromJSON(response.getJSONObject(i)));
+                    }
+
+                    adapter.addAll(newTweets);
+                    swipeContainer.setRefreshing(false);
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
@@ -153,6 +153,11 @@ public class TimelineActivity extends AppCompatActivity {
             default:
                 return false;
         }
+    }
+
+    @OnClick(R.id.fabCompose)
+    public void setComposeBtnOnClick() {
+        goToComposeActivity();
     }
 
     /**
