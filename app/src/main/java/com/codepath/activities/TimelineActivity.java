@@ -2,6 +2,7 @@ package com.codepath.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +34,13 @@ public class TimelineActivity extends AppCompatActivity {
     private BitterClient client;
     private ArrayList<Tweet> tweets;
     private TweetAdapter adapter;
-    @BindView(R.id.rvTweets) RecyclerView rvTweets;
+
+    @BindView(R.id.swipeContainer)
+    SwipeRefreshLayout swipeContainer;
+
+    @BindView(R.id.rvTweets)
+    RecyclerView rvTweets;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +54,40 @@ public class TimelineActivity extends AppCompatActivity {
         rvTweets.setLayoutManager(new LinearLayoutManager(this));
         rvTweets.setAdapter(adapter);
 
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchTimelineAsync(0);
+            }
+        });
+
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
         populateTimeline();
+    }
+
+    public void fetchTimelineAsync(int page) {
+        client.getHomeTimeline(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                adapter.clear();
+                List<Tweet> newTweets = new ArrayList<>();
+
+                try {
+                    for(int i = 0; i < response.length(); i++) {
+                        newTweets.add(Tweet.fromJSON(response.getJSONObject(i)));
+                    }
+
+                    adapter.addAll(newTweets);
+                    swipeContainer.setRefreshing(false);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     /**

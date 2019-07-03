@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.codepath.models.Tweet;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,10 +61,33 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         return tweets.size();
     }
 
+    /**
+     * Helper method to clear the list of tweets, so we can refresh
+     */
+    public void clear() {
+        tweets.clear();
+        notifyDataSetChanged();
+    }
+
+
+    /**
+     * Helper method to add all the tweets back to the list adapter
+     * @param list the list of new tweets
+     */
+    public void addAll(List<Tweet> list) {
+        tweets.addAll(list);
+        notifyDataSetChanged();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.ivProfileImage) ImageView ivProfileImage;
-        @BindView(R.id.tvUsername) TextView tvUsername;
-        @BindView(R.id.tvBody) TextView tvBody;
+        @BindView(R.id.ivProfileImage)
+        ImageView ivProfileImage;
+
+        @BindView(R.id.tvUsername)
+        TextView tvUsername;
+
+        @BindView(R.id.tvBody)
+        TextView tvBody;
 
         public ViewHolder(View itemView) {
             super(itemView);
