@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.models.Tweet;
+import com.codepath.utils.DateHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         Tweet tweet = tweets.get(i);
         viewHolder.tvUsername.setText(tweet.user.username);
         viewHolder.tvBody.setText(tweet.body);
+        viewHolder.tvTimestamp.setText(DateHelper.getRelativeTimeAgo(tweet.createdAt));
 
         Glide.with(context)
                 .load(tweet.user.profileImageUrl)
@@ -69,7 +71,6 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         notifyDataSetChanged();
     }
 
-
     /**
      * Helper method to add all the tweets back to the list adapter
      * @param list the list of new tweets
@@ -88,6 +89,9 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
 
         @BindView(R.id.tvBody)
         TextView tvBody;
+
+        @BindView(R.id.tvTimestamp)
+        TextView tvTimestamp;
 
         public ViewHolder(View itemView) {
             super(itemView);
