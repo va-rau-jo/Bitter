@@ -12,6 +12,8 @@ public class Tweet implements Parcelable {
     public Long uid;
     public User user;
     public String createdAt;
+    public Integer retweets;
+    public Integer favorites;
 
     private Tweet() {}
 
@@ -20,6 +22,8 @@ public class Tweet implements Parcelable {
         uid = in.readLong();
         user = in.readParcelable(User.class.getClassLoader());
         createdAt = in.readString();
+        retweets = in.readInt();
+        favorites = in.readInt();
     }
 
     public static final Creator<Tweet> CREATOR = new Creator<Tweet>() {
@@ -40,6 +44,8 @@ public class Tweet implements Parcelable {
         tweet.uid = object.getLong("id");
         tweet.user = User.fromJSON(object.getJSONObject("user"));
         tweet.createdAt = object.getString("created_at");
+        tweet.retweets = object.getInt("retweet_count");
+        tweet.favorites = object.getInt("favorite_count");
         return tweet;
     }
 
@@ -54,5 +60,7 @@ public class Tweet implements Parcelable {
         dest.writeLong(uid);
         dest.writeParcelable(user, 0);
         dest.writeString(createdAt);
+        dest.writeInt(retweets);
+        dest.writeInt(favorites);
     }
 }

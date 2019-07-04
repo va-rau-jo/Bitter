@@ -132,7 +132,7 @@ public class TimelineActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == COMPOSE_RESULT_CODE &&
             data.getExtras() != null) {
-            Tweet tweet = data.getExtras().getParcelable("new_tweet");
+            Tweet tweet = data.getExtras().getParcelable(getString(R.string.new_tweet_key));
             tweets.add(0, tweet);
             adapter.notifyItemInserted(0);
             rvTweets.scrollToPosition(0);
@@ -146,13 +146,11 @@ public class TimelineActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.miCompose:
-                goToComposeActivity();
-                return true;
-            default:
-                return false;
+        if (item.getItemId() == R.id.miProfile) {
+            // TODO go to profile
+            return true;
         }
+        return false;
     }
 
     @OnClick(R.id.fabCompose)

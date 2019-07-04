@@ -4,23 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!--<android.support.v7.widget.CardView-->
-        <!--android:id="@+id/cardContainer"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginStart="4dp"-->
-        <!--android:layout_marginLeft="4dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginEnd="4dp"-->
-        <!--android:layout_marginRight="4dp"-->
-        <!--app:cardCornerRadius="10dp"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent">-->
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!--<android.support.constraint.ConstraintLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/ivProfileImage"
@@ -38,9 +39,8 @@
                 android:id="@+id/tvUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:text="asdfasdf"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 app:layout_constraintStart_toEndOf="@id/ivProfileImage"
                 app:layout_constraintTop_toTopOf="@+id/ivProfileImage" />
@@ -49,27 +49,98 @@
                 android:id="@+id/tvBody"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="lololol"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvUsername"
                 app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
 
-    <TextView
-        android:id="@+id/tvTimestamp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintStart_toEndOf="@+id/tvUsername"
-        app:layout_constraintTop_toTopOf="@+id/tvUsername" />
+            <TextView
+                android:id="@+id/tvTimestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintStart_toEndOf="@+id/tvUsername"
+                app:layout_constraintTop_toTopOf="@+id/tvUsername" />
 
-    <!--</android.support.constraint.ConstraintLayout>-->
+            <ImageButton
+                android:id="@+id/ibReply"
+                android:layout_width="@dimen/image_button_size"
+                android:layout_height="@dimen/image_button_size"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvBody"
+                app:layout_constraintTop_toBottomOf="@+id/tvBody"
+                app:srcCompat="@drawable/ic_reply" />
 
-    <!--</android.support.v7.widget.CardView>-->
+            <ImageButton
+                android:id="@+id/ibRetweet"
+                android:layout_width="@dimen/image_button_size"
+                android:layout_height="@dimen/image_button_size"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="8dp"
+                android:background="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/ibReply"
+                app:layout_constraintTop_toBottomOf="@+id/tvBody"
+                app:srcCompat="@drawable/ic_vector_retweet_stroke" />
+
+            <TextView
+                android:id="@+id/tvRetweetCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:textSize="@dimen/image_button_text_size"
+                app:layout_constraintStart_toEndOf="@+id/ibRetweet"
+                app:layout_constraintTop_toTopOf="@+id/ibRetweet" />
+
+            <ImageButton
+                android:id="@+id/ibFavorite"
+                android:layout_width="@dimen/image_button_size"
+                android:layout_height="@dimen/image_button_size"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="8dp"
+                android:background="@null"
+                app:layout_constraintStart_toEndOf="@+id/tvRetweetCounter"
+                app:layout_constraintTop_toBottomOf="@+id/tvBody"
+                app:srcCompat="@drawable/ic_vector_heart_stroke" />
+
+            <TextView
+                android:id="@+id/tvFavoriteCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:textSize="@dimen/image_button_text_size"
+                app:layout_constraintStart_toEndOf="@+id/ibFavorite"
+                app:layout_constraintTop_toTopOf="@+id/ibFavorite" />
+
+            <ImageButton
+                android:id="@+id/ibDM"
+                android:layout_width="@dimen/image_button_size"
+                android:layout_height="@dimen/image_button_size"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="8dp"
+                android:background="@null"
+                app:layout_constraintStart_toStartOf="@+id/tvFavoriteCounter"
+                app:layout_constraintTop_toBottomOf="@+id/tvBody"
+                app:srcCompat="@drawable/ic_vector_compose_dm" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>
