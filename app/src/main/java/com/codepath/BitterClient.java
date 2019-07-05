@@ -46,11 +46,14 @@ public class BitterClient extends OAuthBaseClient {
 	 * Get the timeline from the twitter API
 	 * @param handler The handler that handles onSuccess and onFailure
 	 */
-	public void getHomeTimeline(AsyncHttpResponseHandler handler) {
+	public void getHomeTimeline(long maxId, AsyncHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("statuses/home_timeline.json");
 		RequestParams params = new RequestParams();
 		params.put("count", TWEET_AMOUNT);
 		params.put("tweet_mode", "extended");
+		if(maxId != 0)
+			params.put("max_id", maxId);
+
 		client.get(apiUrl, params, handler);
 	}
 

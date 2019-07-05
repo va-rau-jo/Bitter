@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.codepath.BitterApp;
 import com.codepath.BitterClient;
+import com.codepath.EndlessRecyclerViewScrollListener;
 import com.codepath.R;
 import com.codepath.TweetAdapter;
 import com.codepath.models.Tweet;
@@ -35,6 +36,8 @@ public class TimelineActivity extends AppCompatActivity {
     private BitterClient client;
     private ArrayList<Tweet> tweets;
     private TweetAdapter adapter;
+    private EndlessRecyclerViewScrollListener endlessScrollListener;
+    private long maxId = 0;
 
     @BindView(R.id.swipeContainer)
     SwipeRefreshLayout swipeContainer;
@@ -56,8 +59,19 @@ public class TimelineActivity extends AppCompatActivity {
         client = BitterApp.getRestClient(this);
         tweets = new ArrayList<>();
         adapter = new TweetAdapter(TimelineActivity.this, tweets);
-        rvTweets.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        rvTweets.setLayoutManager(linearLayoutManager);
         rvTweets.setAdapter(adapter);
+
+        // Adding endless scrolling
+        endlessScrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                loadNextDataFromApi();
+            }
+        };
+
+        rvTweets.addOnScrollListener(endlessScrollListener);
 
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -72,7 +86,7 @@ public class TimelineActivity extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         miActionProgressItem = menu.findItem(R.id.miActionProgress);
-        populateTimeline();
+        populateTimeline(maxId);
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -87,12 +101,18 @@ public class TimelineActivity extends AppCompatActivity {
         return true;
     }
 
+    private void loadNextDataFromApi() {
+        maxId = tweets.get(tweets.size() - 1).uid;
+        populateTimeline(maxId);
+    }
+
     /**
      * Called to populate the recycler view with the user's timeline
      */
-    private void populateTimeline() {
+    private void populateTimeline(long maxId) {
         showProgressBar();
-        client.getHomeTimeline(new JsonHttpResponseHandler() {
+
+        client.getHomeTimeline(maxId, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 try {
@@ -130,7 +150,7 @@ public class TimelineActivity extends AppCompatActivity {
 
     public void fetchTimelineAsync() {
         showProgressBar();
-        client.getHomeTimeline(new JsonHttpResponseHandler() {
+        client.getHomeTimeline(maxId, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 adapter.clear();
