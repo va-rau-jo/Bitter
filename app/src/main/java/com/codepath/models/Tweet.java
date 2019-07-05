@@ -49,6 +49,17 @@ public class Tweet implements Parcelable {
         return tweet;
     }
 
+    public static Tweet getReplyFromJSON(JSONObject object) throws JSONException {
+        Tweet tweet = new Tweet();
+        tweet.body = object.getString("text").replace("&amp;", "&");
+        tweet.uid = object.getLong("id");
+        tweet.user = User.fromJSON(object.getJSONObject("user"));
+        tweet.createdAt = object.getString("created_at");
+        tweet.retweets = object.getInt("retweet_count");
+        tweet.favorites = object.getInt("favorite_count");
+        return tweet;
+    }
+
     @Override
     public int describeContents() {
         return hashCode();

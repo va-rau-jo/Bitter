@@ -31,7 +31,7 @@ public class BitterClient extends OAuthBaseClient {
 
 	// See https://developer.chrome.com/multidevice/android/intents
 	public static final String REST_CALLBACK_URL_TEMPLATE = "intent://%s#Intent;action=android.intent.action.VIEW;scheme=%s;package=%s;S.browser_fallback_url=%s;end";
-	private static final int TWEET_AMOUNT = 5;
+	private static final int TWEET_AMOUNT = 20;
 
 	public BitterClient(Context context) {
 		super(context, REST_API_INSTANCE,

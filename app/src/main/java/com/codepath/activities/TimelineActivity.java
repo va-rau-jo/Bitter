@@ -3,18 +3,21 @@ package com.codepath.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 
 import com.codepath.BitterApp;
 import com.codepath.BitterClient;
 import com.codepath.R;
 import com.codepath.TweetAdapter;
 import com.codepath.models.Tweet;
+import com.codepath.utils.ResultCodes;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
@@ -30,9 +33,6 @@ import cz.msebera.android.httpclient.Header;
 
 public class TimelineActivity extends AppCompatActivity {
 
-    // Code for creating a tweet
-    public static final int COMPOSE_RESULT_CODE = 11;
-
     private BitterClient client;
     private ArrayList<Tweet> tweets;
     private TweetAdapter adapter;
@@ -46,6 +46,8 @@ public class TimelineActivity extends AppCompatActivity {
     @BindView(R.id.fabCompose)
     FloatingActionButton fabCompose;
 
+    MenuItem miActionProgressItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,7 @@ public class TimelineActivity extends AppCompatActivity {
 
         client = BitterApp.getRestClient(this);
         tweets = new ArrayList<>();
-        adapter = new TweetAdapter(tweets);
+        adapter = new TweetAdapter(TimelineActivity.this, tweets);
         rvTweets.setLayoutManager(new LinearLayoutManager(this));
         rvTweets.setAdapter(adapter);
 
@@ -67,6 +69,13 @@ public class TimelineActivity extends AppCompatActivity {
 
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright);
         populateTimeline();
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        miActionProgressItem = menu.findItem(R.id.miActionProgress);
+        ProgressBar v =  (ProgressBar) MenuItemCompat.getActionView(miActionProgressItem);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     /**
@@ -102,6 +111,7 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
     public void fetchTimelineAsync() {
+        showProgressBar();
         client.getHomeTimeline(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -120,6 +130,7 @@ public class TimelineActivity extends AppCompatActivity {
                 }
             }
         });
+        hideProgressBar();
     }
 
     /**
@@ -130,7 +141,7 @@ public class TimelineActivity extends AppCompatActivity {
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == COMPOSE_RESULT_CODE &&
+        if (resultCode == RESULT_OK && requestCode == ResultCodes.COMPOSE_RESULT_CODE &&
             data.getExtras() != null) {
             Tweet tweet = data.getExtras().getParcelable(getString(R.string.new_tweet_key));
             tweets.add(0, tweet);
@@ -158,10 +169,18 @@ public class TimelineActivity extends AppCompatActivity {
         goToComposeActivity();
     }
 
+    private void showProgressBar() {
+        miActionProgressItem.setVisible(true);
+    }
+
+    private void hideProgressBar() {
+        miActionProgressItem.setVisible(false);
+    }
+
     /**
      * Starts the compose activity and forces a callback with the new tweet parcel
      */
     private void goToComposeActivity() {
-        startActivityForResult(new Intent(this, ComposeActivity.class), COMPOSE_RESULT_CODE);
+        startActivityForResult(new Intent(this, ComposeActivity.class), ResultCodes.COMPOSE_RESULT_CODE);
     }
 }

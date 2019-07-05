@@ -81,64 +81,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvBody"
                 app:srcCompat="@drawable/ic_reply" />
 
-            <ImageButton
-                android:id="@+id/ibRetweet"
-                android:layout_width="@dimen/image_button_size"
-                android:layout_height="@dimen/image_button_size"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginBottom="8dp"
-                android:background="@null"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/ibReply"
-                app:layout_constraintTop_toBottomOf="@+id/tvBody"
-                app:srcCompat="@drawable/ic_vector_retweet_stroke" />
-
-            <TextView
-                android:id="@+id/tvRetweetCounter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:textSize="@dimen/image_button_text_size"
-                app:layout_constraintStart_toEndOf="@+id/ibRetweet"
-                app:layout_constraintTop_toTopOf="@+id/ibRetweet" />
-
-            <ImageButton
-                android:id="@+id/ibFavorite"
-                android:layout_width="@dimen/image_button_size"
-                android:layout_height="@dimen/image_button_size"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="8dp"
-                android:background="@null"
-                app:layout_constraintStart_toEndOf="@+id/tvRetweetCounter"
-                app:layout_constraintTop_toBottomOf="@+id/tvBody"
-                app:srcCompat="@drawable/ic_vector_heart_stroke" />
-
-            <TextView
-                android:id="@+id/tvFavoriteCounter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:textSize="@dimen/image_button_text_size"
-                app:layout_constraintStart_toEndOf="@+id/ibFavorite"
-                app:layout_constraintTop_toTopOf="@+id/ibFavorite" />
-
-            <ImageButton
-                android:id="@+id/ibDM"
-                android:layout_width="@dimen/image_button_size"
-                android:layout_height="@dimen/image_button_size"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="8dp"
-                android:background="@null"
-                app:layout_constraintStart_toStartOf="@+id/tvFavoriteCounter"
-                app:layout_constraintTop_toBottomOf="@+id/tvBody"
-                app:srcCompat="@drawable/ic_vector_compose_dm" />
-
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.CardView>
