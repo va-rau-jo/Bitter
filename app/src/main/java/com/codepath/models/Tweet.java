@@ -14,6 +14,8 @@ public class Tweet implements Parcelable {
     public String createdAt;
     public Integer retweets;
     public Integer favorites;
+    public boolean retweeted;
+    public boolean favorited;
 
     private Tweet() {}
 
@@ -24,6 +26,8 @@ public class Tweet implements Parcelable {
         createdAt = in.readString();
         retweets = in.readInt();
         favorites = in.readInt();
+        retweeted = in.readInt() == 1;
+        favorited = in.readInt() == 1;
     }
 
     public static final Creator<Tweet> CREATOR = new Creator<Tweet>() {
@@ -46,17 +50,8 @@ public class Tweet implements Parcelable {
         tweet.createdAt = object.getString("created_at");
         tweet.retweets = object.getInt("retweet_count");
         tweet.favorites = object.getInt("favorite_count");
-        return tweet;
-    }
-
-    public static Tweet getReplyFromJSON(JSONObject object) throws JSONException {
-        Tweet tweet = new Tweet();
-        tweet.body = object.getString("full_text").replace("&amp;", "&");
-        tweet.uid = object.getLong("id");
-        tweet.user = User.fromJSON(object.getJSONObject("user"));
-        tweet.createdAt = object.getString("created_at");
-        tweet.retweets = object.getInt("retweet_count");
-        tweet.favorites = object.getInt("favorite_count");
+        tweet.retweeted = object.getBoolean("retweeted");
+        tweet.favorited = object.getBoolean("favorited");
         return tweet;
     }
 
@@ -73,5 +68,7 @@ public class Tweet implements Parcelable {
         dest.writeString(createdAt);
         dest.writeInt(retweets);
         dest.writeInt(favorites);
+        dest.writeInt(retweeted ? 1 : 0);
+        dest.writeInt(favorited ? 1 : 0);
     }
 }

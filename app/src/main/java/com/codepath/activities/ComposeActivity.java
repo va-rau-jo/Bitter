@@ -99,7 +99,7 @@ public class ComposeActivity extends AppCompatActivity {
                             try {
                                 Toast.makeText(ComposeActivity.this, "Reply sent", Toast.LENGTH_LONG).show();
                                 btnSend.setEnabled(true);
-                                Tweet newTweet = Tweet.getReplyFromJSON(response);
+                                Tweet newTweet = Tweet.fromJSON(response);
                                 Intent intent = new Intent();
                                 intent.putExtra(getString(R.string.new_tweet_key), newTweet);
                                 setResult(RESULT_OK, intent);

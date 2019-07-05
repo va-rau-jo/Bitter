@@ -55,8 +55,8 @@
         android:layout_width="@dimen/image_button_size"
         android:layout_height="@dimen/image_button_size"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:layout_marginBottom="8dp"
         android:background="@null"
         app:layout_constraintStart_toStartOf="@+id/tvBody"
@@ -68,13 +68,13 @@
         android:layout_width="@dimen/image_button_size"
         android:layout_height="@dimen/image_button_size"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginBottom="8dp"
         android:background="@null"
-        app:layout_constraintStart_toStartOf="@+id/ibReply"
+        app:layout_constraintStart_toEndOf="@+id/ibReply"
         app:layout_constraintTop_toBottomOf="@+id/tvBody"
-        app:srcCompat="@drawable/ic_vector_retweet_stroke" />
+        app:srcCompat="@drawable/ic_retweet" />
 
     <TextView
         android:id="@+id/tvRetweetCounter"
@@ -90,13 +90,13 @@
         android:id="@+id/ibFavorite"
         android:layout_width="@dimen/image_button_size"
         android:layout_height="@dimen/image_button_size"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="8dp"
         android:background="@null"
-        app:layout_constraintStart_toEndOf="@+id/tvRetweetCounter"
+        app:layout_constraintStart_toEndOf="@+id/ibRetweet"
         app:layout_constraintTop_toBottomOf="@+id/tvBody"
-        app:srcCompat="@drawable/ic_vector_heart_stroke" />
+        app:srcCompat="@drawable/ic_heart" />
 
     <TextView
         android:id="@+id/tvFavoriteCounter"
@@ -112,13 +112,12 @@
         android:id="@+id/ibDM"
         android:layout_width="@dimen/image_button_size"
         android:layout_height="@dimen/image_button_size"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="8dp"
         android:background="@null"
-        app:layout_constraintStart_toStartOf="@+id/tvFavoriteCounter"
+        app:layout_constraintStart_toEndOf="@+id/ibFavorite"
         app:layout_constraintTop_toBottomOf="@+id/tvBody"
         app:srcCompat="@drawable/ic_vector_compose_dm" />
-
 
 </android.support.constraint.ConstraintLayout>

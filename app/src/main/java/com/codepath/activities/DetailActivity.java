@@ -75,6 +75,9 @@ public class DetailActivity extends AppCompatActivity {
                 .bitmapTransform(new CropCircleTransformation(this))
                 .into(ivProfileImage);
 
+        ibRetweet.setSelected(tweet.retweeted);
+        ibFavorite.setSelected(tweet.favorited);
+
         tvRetweetCounter.setText(FormatHelper.formatCounter(tweet.retweets));
         tvFavoriteCounter.setText(FormatHelper.formatCounter(tweet.favorites));
     }
