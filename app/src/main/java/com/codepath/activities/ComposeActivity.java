@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -42,6 +44,8 @@ public class ComposeActivity extends AppCompatActivity {
     @BindView(R.id.tvCharCount)
     TextView tvCharCount;
 
+    MenuItem miActionProgressItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +66,18 @@ public class ComposeActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        miActionProgressItem = menu.findItem(R.id.miActionProgress);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.compose, menu);
+        return true;
+    }
+
     /**
      * Creates the event listener for a click on the send button. Uses the BitterClient to make a
      * post call to the Twitter API
@@ -74,6 +90,8 @@ public class ComposeActivity extends AppCompatActivity {
                 String message = etTweetInput.getText().toString();
                 btnSend.setEnabled(false);
 
+                showProgressBar();
+
                 if (replyTweetId != -1) {
                     client.replyToTweet(message, replyTweetId, new JsonHttpResponseHandler() {
                         @Override
@@ -85,6 +103,7 @@ public class ComposeActivity extends AppCompatActivity {
                                 Intent intent = new Intent();
                                 intent.putExtra(getString(R.string.new_tweet_key), newTweet);
                                 setResult(RESULT_OK, intent);
+                                hideProgressBar();
                                 finish();
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -102,6 +121,7 @@ public class ComposeActivity extends AppCompatActivity {
                                 Intent intent = new Intent();
                                 intent.putExtra(getString(R.string.new_tweet_key), newTweet);
                                 setResult(RESULT_OK, intent);
+                                hideProgressBar();
                                 finish();
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -127,5 +147,13 @@ public class ComposeActivity extends AppCompatActivity {
         }
         String charCount = diff + "";
         tvCharCount.setText(charCount);
+    }
+
+    private void showProgressBar() {
+        miActionProgressItem.setVisible(true);
+    }
+
+    private void hideProgressBar() {
+        miActionProgressItem.setVisible(false);
     }
 }

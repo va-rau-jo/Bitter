@@ -62,6 +62,7 @@ public class BitterClient extends OAuthBaseClient {
 		String apiUrl = getApiUrl("statuses/update.json");
 		RequestParams params = new RequestParams();
 		params.put("status", message);
+		params.put("tweet_mode", "extended");
 		client.post(apiUrl, params, handler);
 	}
 
@@ -70,6 +71,20 @@ public class BitterClient extends OAuthBaseClient {
 		RequestParams params = new RequestParams();
 		params.put("status", message);
 		params.put("in_reply_to_status_id", tweetId);
+		params.put("tweet_mode", "extended");
+		client.post(apiUrl, params, handler);
+	}
+
+	/**
+	 * Favorite OR unfavorite a tweet
+	 * @param tweetId the ID of a tweet
+	 * @param like If true, you are liking the tweet. If false, you are unliking the tweet
+	 */
+	public void favoriteTweet(long tweetId, boolean like, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("favorites/" + (like ? "create" : "destroy") + ".json");
+		RequestParams params = new RequestParams();
+		params.put("id", tweetId);
+		params.put("tweet_mode", "extended");
 		client.post(apiUrl, params, handler);
 	}
 

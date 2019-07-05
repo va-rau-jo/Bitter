@@ -51,7 +51,7 @@ public class Tweet implements Parcelable {
 
     public static Tweet getReplyFromJSON(JSONObject object) throws JSONException {
         Tweet tweet = new Tweet();
-        tweet.body = object.getString("text").replace("&amp;", "&");
+        tweet.body = object.getString("full_text").replace("&amp;", "&");
         tweet.uid = object.getLong("id");
         tweet.user = User.fromJSON(object.getJSONObject("user"));
         tweet.createdAt = object.getString("created_at");

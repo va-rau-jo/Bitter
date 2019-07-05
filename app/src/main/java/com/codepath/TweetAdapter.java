@@ -110,8 +110,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         @BindView(R.id.ibReply)
         ImageButton ibReply;
 
-
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
 
@@ -120,14 +119,13 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
                 public void onClick(View v) {
                     Intent intent = new Intent(context, DetailActivity.class);
                     intent.putExtra("tweet", tweets.get(getAdapterPosition()));
-
                     context.startActivity(intent);
                 }
             });
         }
 
         @OnClick(R.id.ibReply)
-        void setReplyOnClick(View v) {
+        void setReplyOnClick() {
             int position = getAdapterPosition();
 
             if (position != RecyclerView.NO_POSITION) {

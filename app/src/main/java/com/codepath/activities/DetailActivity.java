@@ -7,17 +7,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.codepath.BitterClient;
 import com.codepath.R;
 import com.codepath.models.Tweet;
 import com.codepath.utils.FormatHelper;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cz.msebera.android.httpclient.Header;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class DetailActivity extends AppCompatActivity {
     private Tweet tweet;
+    private BitterClient client;
 
     @BindView(R.id.ivProfileImage)
     ImageView ivProfileImage;
@@ -59,7 +66,6 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void initializeView() {
-
         tvUsername.setText(tweet.user.username);
         tvBody.setText(tweet.body);
         tvTimestamp.setText(FormatHelper.getRelativeTimeAgo(tweet.createdAt));
@@ -73,7 +79,6 @@ public class DetailActivity extends AppCompatActivity {
         tvFavoriteCounter.setText(FormatHelper.formatCounter(tweet.favorites));
     }
 
-
     @OnClick(R.id.ibRetweet)
     public void setRetweetOnClick(ImageButton button) {
         Object tag = button.getTag();
@@ -85,5 +90,22 @@ public class DetailActivity extends AppCompatActivity {
             button.setTag(null);
             button.setImageResource(R.drawable.ic_vector_retweet_stroke);
         }
+    }
+
+    @OnClick(R.id.ibFavorite)
+    public void setFavoriteOnClick(final ImageButton button) {
+        boolean liked = button.getTag() != null;
+        client.favoriteTweet(tweet.uid, !liked, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                try {
+                    throw new JSONException("Shug pu");
+
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

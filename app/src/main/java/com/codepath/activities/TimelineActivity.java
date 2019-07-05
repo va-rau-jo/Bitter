@@ -3,14 +3,12 @@ package com.codepath.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
 
 import com.codepath.BitterApp;
 import com.codepath.BitterClient;
@@ -22,6 +20,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,13 +67,12 @@ public class TimelineActivity extends AppCompatActivity {
         });
 
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright);
-        populateTimeline();
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         miActionProgressItem = menu.findItem(R.id.miActionProgress);
-        ProgressBar v =  (ProgressBar) MenuItemCompat.getActionView(miActionProgressItem);
+        populateTimeline();
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -93,6 +91,7 @@ public class TimelineActivity extends AppCompatActivity {
      * Called to populate the recycler view with the user's timeline
      */
     private void populateTimeline() {
+        showProgressBar();
         client.getHomeTimeline(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -106,6 +105,25 @@ public class TimelineActivity extends AppCompatActivity {
                 catch (JSONException e) {
                     e.printStackTrace();
                 }
+                hideProgressBar();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                hideProgressBar();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                hideProgressBar();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                hideProgressBar();
             }
         });
     }
@@ -128,9 +146,9 @@ public class TimelineActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                hideProgressBar();
             }
         });
-        hideProgressBar();
     }
 
     /**
