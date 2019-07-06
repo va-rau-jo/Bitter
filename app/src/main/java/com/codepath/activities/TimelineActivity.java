@@ -115,7 +115,7 @@ public class TimelineActivity extends AppCompatActivity {
      */
     private void populateTimeline(long maxId) {
         showProgressBar();
-
+        //endlessScrollListener.resetState();
         client.getHomeTimeline(maxId, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -154,6 +154,7 @@ public class TimelineActivity extends AppCompatActivity {
 
     public void fetchTimelineAsync() {
         showProgressBar();
+        //endlessScrollListener.resetState();
         client.getHomeTimeline(maxId, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
