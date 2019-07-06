@@ -3,6 +3,7 @@ package com.codepath.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,6 +17,10 @@ public class Tweet implements Parcelable {
     public Integer favorites;
     public boolean retweeted;
     public boolean favorited;
+
+    // For embedded images
+    public Entity entity;
+    public boolean hasEntities;
 
     private Tweet() {}
 
@@ -52,6 +57,16 @@ public class Tweet implements Parcelable {
         tweet.favorites = object.getInt("favorite_count");
         tweet.retweeted = object.getBoolean("retweeted");
         tweet.favorited = object.getBoolean("favorited");
+
+        JSONObject entityObject = object.getJSONObject("entities");
+
+        if(entityObject.has("media")) {
+            JSONArray mediaArray = entityObject.getJSONArray("media");
+            if(mediaArray != null && mediaArray.length() > 0) {
+                tweet.entity = Entity.fromJSON(entityObject);
+                tweet.hasEntities = true;
+            }
+        }
         return tweet;
     }
 

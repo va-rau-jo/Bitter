@@ -2,6 +2,7 @@ package com.codepath.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cz.msebera.android.httpclient.Header;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class DetailActivity extends AppCompatActivity {
     private Tweet tweet;
@@ -53,6 +55,9 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.tvFavoriteCounter)
     TextView tvFavoriteCounter;
 
+    @BindView(R.id.ivMedia)
+    ImageView ivMedia;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +85,17 @@ public class DetailActivity extends AppCompatActivity {
 
         tvRetweetCounter.setText(FormatHelper.formatCounter(tweet.retweets));
         tvFavoriteCounter.setText(FormatHelper.formatCounter(tweet.favorites));
+
+        if(tweet.hasEntities) {
+            ivMedia.setVisibility(View.VISIBLE);
+            Glide.with(this)
+                    .load(tweet.entity.mediaURL)
+                    .bitmapTransform(new RoundedCornersTransformation(this, 10, 0))
+                    .into(ivMedia);
+        } else {
+            ivMedia.setVisibility(View.GONE);
+        }
+
     }
 
     @OnClick(R.id.ibRetweet)

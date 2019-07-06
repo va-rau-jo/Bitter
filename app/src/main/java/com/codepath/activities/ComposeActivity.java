@@ -11,7 +11,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.codepath.BitterApp;
 import com.codepath.BitterClient;
@@ -92,43 +91,22 @@ public class ComposeActivity extends AppCompatActivity {
 
                 showProgressBar();
 
-                if (replyTweetId != -1) {
-                    client.replyToTweet(message, replyTweetId, new JsonHttpResponseHandler() {
-                        @Override
-                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                            try {
-                                Toast.makeText(ComposeActivity.this, "Reply sent", Toast.LENGTH_LONG).show();
-                                btnSend.setEnabled(true);
-                                Tweet newTweet = Tweet.fromJSON(response);
-                                Intent intent = new Intent();
-                                intent.putExtra(getString(R.string.new_tweet_key), newTweet);
-                                setResult(RESULT_OK, intent);
-                                hideProgressBar();
-                                finish();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+                client.sendTweet(message, replyTweetId, new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        try {
+                            btnSend.setEnabled(true);
+                            Tweet newTweet = Tweet.fromJSON(response);
+                            Intent intent = new Intent();
+                            intent.putExtra(getString(R.string.new_tweet_key), newTweet);
+                            setResult(RESULT_OK, intent);
+                            hideProgressBar();
+                            finish();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    });
-                } else {
-                    client.sendTweet(message, new JsonHttpResponseHandler() {
-                        @Override
-                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                            try {
-                                Toast.makeText(ComposeActivity.this, "Tweet sent", Toast.LENGTH_LONG).show();
-                                btnSend.setEnabled(true);
-                                Tweet newTweet = Tweet.fromJSON(response);
-                                Intent intent = new Intent();
-                                intent.putExtra(getString(R.string.new_tweet_key), newTweet);
-                                setResult(RESULT_OK, intent);
-                                hideProgressBar();
-                                finish();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                }
+                    }
+                });
             }
         });
     }

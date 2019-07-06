@@ -26,6 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
 
@@ -70,6 +71,16 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
                 .load(tweet.user.profileImageUrl)
                 .bitmapTransform(new CropCircleTransformation(context))
                 .into(viewHolder.ivProfileImage);
+
+        if(tweet.hasEntities) {
+            viewHolder.ivMedia.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(tweet.entity.mediaURL)
+                    .bitmapTransform(new RoundedCornersTransformation(context, 10, 0))
+                    .into(viewHolder.ivMedia);
+        } else {
+            viewHolder.ivMedia.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -109,6 +120,10 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
 
         @BindView(R.id.ibReply)
         ImageButton ibReply;
+
+        @BindView(R.id.ivMedia)
+        ImageView ivMedia;
+
 
         ViewHolder(View itemView) {
             super(itemView);

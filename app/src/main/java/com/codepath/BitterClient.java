@@ -23,8 +23,8 @@ import com.loopj.android.http.RequestParams;
 public class BitterClient extends OAuthBaseClient {
 	public static final BaseApi REST_API_INSTANCE = TwitterApi.instance();
 	public static final String REST_URL = "https://api.twitter.com/1.1";
-	public static final String REST_CONSUMER_KEY = "4KxocRp2Wh8RZ9cy1KJEjxGVy";
-	public static final String REST_CONSUMER_SECRET = "EeyJ4vEZN3al7c0C13bMwAY3pGc2RASrampYtvJvnX1kLDHKJf";
+	public static final String REST_CONSUMER_KEY = "ABaCtvkJthocDnKfbw8REoOW4";
+	public static final String REST_CONSUMER_SECRET = "uVntI345xJ0vTSyExmbTqUvLd2vo8SVznfiLo3tewrsjUodeTa";
 
 	// Landing page to indicate the OAuth flow worked in case Chrome for Android 25+ blocks navigation back to the app.
 	public static final String FALLBACK_URL = "https://codepath.github.io/android-rest-client-template/success.html";
@@ -61,20 +61,15 @@ public class BitterClient extends OAuthBaseClient {
 	 * Sends a tweet and uploads it through the Twitter API
 	 * @param message The string message sent
 	 */
-	public void sendTweet(String message, AsyncHttpResponseHandler handler) {
+	public void sendTweet(String message, long tweetId, AsyncHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("statuses/update.json");
 		RequestParams params = new RequestParams();
 		params.put("status", message);
 		params.put("tweet_mode", "extended");
-		client.post(apiUrl, params, handler);
-	}
 
-	public void replyToTweet(String message, long tweetId, AsyncHttpResponseHandler handler) {
-		String apiUrl = getApiUrl("statuses/update.json");
-		RequestParams params = new RequestParams();
-		params.put("status", message);
-		params.put("in_reply_to_status_id", tweetId);
-		params.put("tweet_mode", "extended");
+		if(tweetId != -1)
+			params.put("in_reply_to_status_id", tweetId);
+
 		client.post(apiUrl, params, handler);
 	}
 
