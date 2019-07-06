@@ -2,6 +2,7 @@ package com.codepath.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -51,6 +52,9 @@ public class ComposeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_compose);
         ButterKnife.bind(this);
         client = BitterApp.getRestClient(this);
+
+        getSupportActionBar().setBackgroundDrawable(
+                new ColorDrawable(getResources().getColor(R.color.twitter_blue)));
 
         Bundle bundle = getIntent().getExtras();
         // reply

@@ -1,5 +1,6 @@
 package com.codepath.activities;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -63,6 +64,9 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
+        
+        getSupportActionBar().setBackgroundDrawable(
+                new ColorDrawable(getResources().getColor(R.color.twitter_blue)));
 
         if(getIntent().getExtras() != null)
             tweet = getIntent().getExtras().getParcelable("tweet");

@@ -1,6 +1,7 @@
 package com.codepath.activities;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,6 +22,9 @@ public class LoginActivity extends OAuthLoginActionBarActivity<BitterClient> {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+
+		getSupportActionBar().setBackgroundDrawable(
+				new ColorDrawable(getResources().getColor(R.color.twitter_blue)));
 
 		final SampleModel sampleModel = new SampleModel();
 		sampleModel.setName("CodePath");

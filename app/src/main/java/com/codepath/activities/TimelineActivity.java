@@ -57,10 +57,8 @@ public class TimelineActivity extends AppCompatActivity {
         setContentView(R.layout.activity_timeline);
         ButterKnife.bind(this);
 
-
         getSupportActionBar().setBackgroundDrawable(
                 new ColorDrawable(getResources().getColor(R.color.twitter_blue)));
-
 
         client = BitterApp.getRestClient(this);
         tweets = new ArrayList<>();
@@ -202,8 +200,10 @@ public class TimelineActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.miProfile) {
-            // TODO go to profile
+            // Go to profile
             return true;
+        } else if(item.getItemId() == R.id.miCompose) {
+            startActivity(new Intent(this, ComposeActivity.class));
         }
         return false;
     }
