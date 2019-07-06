@@ -23,8 +23,8 @@ import com.loopj.android.http.RequestParams;
 public class BitterClient extends OAuthBaseClient {
 	public static final BaseApi REST_API_INSTANCE = TwitterApi.instance();
 	public static final String REST_URL = "https://api.twitter.com/1.1";
-	public static final String REST_CONSUMER_KEY = "ABaCtvkJthocDnKfbw8REoOW4";
-	public static final String REST_CONSUMER_SECRET = "uVntI345xJ0vTSyExmbTqUvLd2vo8SVznfiLo3tewrsjUodeTa";
+	public static final String REST_CONSUMER_KEY = "rllBCzpDlSKxcP4KLfYaHIqtV";
+	public static final String REST_CONSUMER_SECRET = "kybWvvX9paFvOiUjNG7S8Mgexi2XVMp37eisBRfUfUtkXFpT3z";
 
 	// Landing page to indicate the OAuth flow worked in case Chrome for Android 25+ blocks navigation back to the app.
 	public static final String FALLBACK_URL = "https://codepath.github.io/android-rest-client-template/success.html";
